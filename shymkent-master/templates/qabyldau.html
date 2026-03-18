@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 
+{% load asset_tags %}
 	{% block content %}
 
 
@@ -11,11 +12,11 @@
 			<div class="col-md-6 animate-box">
 				<h2>{{ q.title }}</h2>
 				 {{ q.short_description }}
-				<p><a href="{{ q.link}}">{{ q.link}}</a></p>
+				<p><a href="{{ q.link }}">{{ q.link }}</a></p>
 			</div>
 			<div class="col-md-6">
 				{% if q.photo %}
-				<h5 class="card-header"><img style="width: 100%;" src="/media/{{ q.photo }}"></h5>
+				<h5 class="card-header"><img style="width: 100%;" src="{{ q.photo|asset_url }}"></h5>
 				{% endif%}
 				<p></p>
 			</div>

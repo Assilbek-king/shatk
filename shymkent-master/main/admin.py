@@ -1,228 +1,104 @@
 from django.contrib import admin
-from main.models import *
 
-# Register your models here.
+from .forms import *
+from .models import *
 
+
+@admin.register(Languages)
 class LanguagesAdmin(admin.ModelAdmin):
     pass
-admin.site.register(Languages, LanguagesAdmin)
 
+
+@admin.register(TransValue)
 class TransValueAdmin(admin.ModelAdmin):
     pass
-admin.site.register(TransValue, TransValueAdmin)
 
+
+@admin.register(Information)
 class InformationAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Information, InformationAdmin)
+    form = InformationAdminForm
 
 
+@admin.register(Slider)
 class SliderAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Slider, SliderAdmin)
+    form = SliderAdminForm
 
 
-
+@admin.register(Icon)
 class IconAdmin(admin.ModelAdmin):
     pass
-admin.site.register(Icon, IconAdmin)
 
 
+@admin.register(About)
 class AboutAdmin(admin.ModelAdmin):
     pass
-admin.site.register(About, AboutAdmin)
 
 
-
+@admin.register(Specialty)
 class SpecialtyAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Specialty, SpecialtyAdmin)
+    form = SpecialtyAdminForm
 
 
-
+@admin.register(Comentary)
 class ComentaryAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Comentary, ComentaryAdmin)
+    form = ComentaryAdminForm
 
 
+@admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(News, NewsAdmin)
+    form = NewsAdminForm
 
 
+@admin.register(Karta)
 class KartaAdmin(admin.ModelAdmin):
     pass
-admin.site.register(Karta, KartaAdmin)
 
 
-
+@admin.register(Register)
 class RegisterAdmin(admin.ModelAdmin):
     pass
-admin.site.register(Register, RegisterAdmin)
 
 
+# Photo/link based modules.
+_asset_admin_map = {
+    Galery: GaleryAdminForm,
+    Teacher: TeacherAdminForm,
+    Baza: BazaAdminForm,
+    Qabyldau: QabyldauAdminForm,
+    Biliktilik: BiliktilikAdminForm,
+    KollejTarihi: KollejTarihiAdminForm,
+    License: LicenseAdminForm,
+    Tulekter: TulekterAdminForm,
+    Acredatsiya: AcredatsiyaAdminForm,
+    Qurylym: QurylymAdminForm,
+    Missiya: MissiyaAdminForm,
+    OquAdisteme: OquAdistemeAdminForm,
+    Jemqorlyq: JemqorlyqAdminForm,
+    AdistemelikKabinet: AdistemelikKabinetAdminForm,
+    JasMaman: JasMamanAdminForm,
+    Birlestikter: BirlestikterAdminForm,
+    Jetistikter: JetistikterAdminForm,
+    StudenttikKenes: StudenttikKenesAdminForm,
+    Bitirushiler: BitirushilerAdminForm,
+    StudenttikOmir: StudenttikOmirAdminForm,
+    Qashyqtyq: QashyqtyqAdminForm,
+    OquUrdisi: OquUrdisiAdminForm,
+    Oqu: OquAdminForm,
+    SabaqKeste: SabaqKesteAdminForm,
+    StudentJetistik: StudentJetistikAdminForm,
+    Aqparat: AqparatAdminForm,
+    JumysqaOrnalasu: JumysqaOrnalasuAdminForm,
+    Seriktester: SeriktesterAdminForm,
+    Saualnama: SaualnamaAdminForm,
+    Talapker: TalapkerAdminForm,
+    KenesJospary: KenesJosparyAdminForm,
+}
 
-class GaleryAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Galery, GaleryAdmin)
+for model, form in _asset_admin_map.items():
+    admin_class = type(f"{model.__name__}Admin", (admin.ModelAdmin,), {"form": form})
+    admin.site.register(model, admin_class)
 
 
-
-class TeacherAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Teacher, TeacherAdmin)
-
-
-
-class BazaAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Baza, BazaAdmin)
-
-
-class QabyldauAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Qabyldau, QabyldauAdmin)
-
-
-
-class BiliktilikAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Biliktilik, BiliktilikAdmin)
-
-
+@admin.register(Video)
 class VideoAdmin(admin.ModelAdmin):
     pass
-admin.site.register(Video, VideoAdmin)
-
-
-
-class KollejTarihiAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(KollejTarihi, KollejTarihiAdmin)
-
-
-class LicenseAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(License, LicenseAdmin)
-
-
-
-class AcredatsiyaAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Acredatsiya, AcredatsiyaAdmin)
-
-
-
-class QurylymAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Qurylym, QurylymAdmin)
-
-
-
-class MissiyaAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Missiya, MissiyaAdmin)
-
-
-class KenesJosparyAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(KenesJospary, KenesJosparyAdmin)
-
-
-class OquAdistemeAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(OquAdisteme, OquAdistemeAdmin)
-
-class JemqorlyqAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Jemqorlyq, JemqorlyqAdmin)
-
-
-class AdistemelikKabinetAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(AdistemelikKabinet, AdistemelikKabinetAdmin)
-
-
-
-class JasMamanAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(JasMaman, JasMamanAdmin)
-
-
-
-class BirlestikterAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Birlestikter, BirlestikterAdmin)
-
-
-class JetistikterAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Jetistikter, JetistikterAdmin)
-
-
-class StudenttikKenesAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(StudenttikKenes, StudenttikKenesAdmin)
-
-
-class BitirushilerAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Bitirushiler, BitirushilerAdmin)
-
-
-class StudenttikOmirAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(StudenttikOmir, StudenttikOmirAdmin)
-
-
-class QashyqtyqAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Qashyqtyq, QashyqtyqAdmin)
-
-
-class OquUrdisiAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(OquUrdisi, OquUrdisiAdmin)
-
-class OquAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Oqu, OquAdmin)
-
-
-class TulekterAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Tulekter, TulekterAdmin)
-
-
-class SabaqKesteAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(SabaqKeste, SabaqKesteAdmin)
-
-
-class StudentJetistikAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(StudentJetistik, StudentJetistikAdmin)
-
-
-class AqparatAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Aqparat, AqparatAdmin)
-
-
-class JumysqaOrnalasuAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(JumysqaOrnalasu, JumysqaOrnalasuAdmin)
-
-
-class SeriktesterAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Seriktester, SeriktesterAdmin)
-
-
-class SaualnamaAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Saualnama, SaualnamaAdmin)
-
-
-class TalapkerAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Talapker, TalapkerAdmin)

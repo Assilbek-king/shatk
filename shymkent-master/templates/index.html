@@ -1,251 +1,195 @@
 {% extends 'base.html' %}
+{% load asset_tags %}
 
+{% block content %}
+<section class="modern-hero">
+    <div class="flexslider">
+        <ul class="slides">
+            {% for slider in sliders %}
+            <li style="background-image: linear-gradient(135deg, rgba(7, 17, 45, 0.86), rgba(28, 96, 172, 0.68)), url({{ slider.photo|asset_url }});">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 text-center slider-text">
+                            <div class="slider-text-inner modern-hero__content">
+                                <span class="modern-kicker">Shymkent Transport College</span>
+                                <h1>{{ slider.main_title }}</h1>
+                                <h2>{{ slider.mini_description }}</h2>
+                                {% for information in informations %}
+                                <p><a class="btn btn-primary btn-lg modern-cta" href="{{ information.knopka_link }}">{{ information.knopka }}</a></p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
 
-	{% block content %}
+<section class="modern-grid-section">
+    <div class="container">
+        <div class="row animate-box">
+            {% for icon in icons|slice:':1' %}
+            <div class="col-md-8 col-md-offset-2 text-center modern-section-heading">
+                <span class="modern-kicker">Advantages</span>
+                <h2>{{ icon.main_title }}</h2>
+                <p>{{ icon.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            {% for icon in icons %}
+            <div class="col-md-3 col-sm-6 animate-box">
+                <div class="modern-card services">
+                    <span class="icon"><i class="{{ icon.name }}"></i></span>
+                    <div class="desc">
+                        <h3><a href="{{ icon.link }}">{{ icon.title }}</a></h3>
+                        <p>{{ icon.mini_description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 
+<section id="fh5co-counter" class="fh5co-counters modern-stats" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row">
+            {% for about in abouts %}
+            <div class="col-md-3 col-sm-6 text-center animate-box">
+                <div class="modern-stat-card">
+                    <span class="icon"><i class="{{ about.logo }}"></i></span>
+                    <span class="fh5co-counter js-counter" data-from="0" data-to="{{ about.count }}" data-speed="2500" data-refresh-interval="50"></span>
+                    <span class="fh5co-counter-label">{{ about.name }}</span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 
-<aside id="fh5co-hero">
-		<div class="flexslider">
-			<ul class="slides">
-		   	{% for slider in sliders %}
-		   	<li style="background-image: url(/media/{{ slider.photo }}">
-		   		<div class="overlay-gradient"></div>
-		   		<div class="container">
-		   			<div class="row">
-			   			<div class="col-md-8 col-md-offset-2 text-center slider-text">
-			   				<div class="slider-text-inner">
-			   					<h1>{{ slider.main_title }}</h1>
-									<h2>{{ slider.mini_description }} </h2>
-									{% for information in informations %}
-										<p><a class="btn btn-primary btn-lg" href="{{ information.knopka_link }}">{{ information.knopka }}</a></p>
-									{% endfor %}
-			   				</div>
-			   			</div>
-			   		</div>
-		   		</div>
-		   	</li>
-			{% endfor %}
-		  	</ul>
-	  	</div>
-	</aside>
+<section id="fh5co-course" class="modern-grid-section modern-soft-bg">
+    <div class="container">
+        <div class="row animate-box">
+            {% for specialty in specialtys|slice:':1' %}
+            <div class="col-md-8 col-md-offset-2 text-center modern-section-heading">
+                <span class="modern-kicker">Programs</span>
+                <h2>{{ specialty.main_title }}</h2>
+                <p>{{ specialty.mini_description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            {% for specialty in specialtys %}
+            <div class="col-md-6 animate-box">
+                <div class="course modern-course-card">
+                    <a href="/specialty/{{ specialty.id }}/" class="course-img" style="background-image: url({{ specialty.photo|asset_url }});"></a>
+                    <div class="desc">
+                        <h3><a href="/specialty/{{ specialty.id }}/">{{ specialty.title }}</a></h3>
+                        <p>{{ specialty.description }}</p>
+                        <span><a href="/specialty/{{ specialty.id }}/" class="btn btn-primary btn-sm btn-course">{% for tr_val in trans_values %}{% if tr_val.code == 'tolygyraq' %}{{ tr_val.title }}{% endif %}{% endfor %}</a></span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 
-	<div id="fh5co-course-categories">
-		<div class="container">
-			<div class="row animate-box">
-				{% for icon in icons %}
-				<div class="col-md-6 col-md-offset-3 text-center">
-					<h2>{{ icon.main_title}}</h2>
-					<p>{{ icon.description}}</p>
-				</div>
-				{% endfor %}
-			</div>
-			<div class="row">
-				{% for icon in icons %}
-				<div class="col-md-3 col-sm-6 text-center animate-box">
-					<div class="services">
-						<span class="icon">
-							<i class="{{ icon.name }}"></i>
-						</span>
-						<div class="desc">
-							<h3><a href="{{icon.link}}">{{ icon.title }}</a></h3>
-							<p>{{ icon.mini_description }}</p>
-						</div>
-					</div>
-				</div>
-				{% endfor %}
-			</div>
-		</div>
-	</div>
+<section id="fh5co-testimonial" class="modern-testimonials">
+    <div class="container">
+        <div class="row animate-box">
+            <div class="col-md-6 col-md-offset-3 text-center modern-section-heading">
+                <span class="modern-kicker">Feedback</span>
+                <h2>{% for tr_val in trans_values %}{% if tr_val.code == 'comment' %}{{ tr_val.title }}{% endif %}{% endfor %}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="row animate-box">
+                    <div class="owl-carousel owl-carousel-fullwidth">
+                        {% for comentary in comentarys %}
+                        <div class="item">
+                            <div class="testimony-slide active text-center modern-testimony-card">
+                                <div class="user" style="background-image: url({{ comentary.photo|asset_url }});"></div>
+                                <span>{{ comentary.last_name }} {{ comentary.first_name }}<br><small>{{ comentary.position }}</small></span>
+                                <blockquote><p>&ldquo;{{ comentary.mini_description }}&rdquo;</p></blockquote>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-	<div id="fh5co-counter" class="fh5co-counters" style="background-image: url(/static/images/img_bg_4.jpg);" data-stellar-background-ratio="0.5">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-10 col-md-offset-1">
-					<div class="row">
-						{% for about in abouts %}
-						<div class="col-md-3 col-sm-6 text-center animate-box">
-							<span class="icon"><i class="{{ about.logo }}"></i></span>
-							<span class="fh5co-counter js-counter" data-from="0" data-to="{{ about.count }}" data-speed="5000" data-refresh-interval="50"></span>
-							<span class="fh5co-counter-label">{{ about.name }}</span>
-						</div>
-						{% endfor %}
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<section id="fh5co-blog" class="modern-grid-section">
+    <div class="container">
+        <div class="row animate-box">
+            {% for new in news|slice:':1' %}
+            <div class="col-md-8 col-md-offset-2 text-center modern-section-heading">
+                <span class="modern-kicker">Updates</span>
+                <h2>{{ new.title }}</h2>
+                <p>{{ new.mini_description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            {% for new in news %}
+            <div class="col-lg-4 col-md-4 animate-box">
+                <div class="fh5co-blog modern-news-card">
+                    <a href="/news/{{ new.id }}/" class="blog-img-holder" style="background-image: url({{ new.photo1|asset_url }});"></a>
+                    <div class="blog-text">
+                        <span class="posted_on">{{ new.date }}</span>
+                        <h3><a href="/news/{{ new.id }}/">{{ new.name }}</a></h3>
+                        <p>{{ new.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 
-	<div id="fh5co-course">
-		<div class="container">
-			<div class="row animate-box">
-				{% for specialty in specialtys %}
-				<div class="col-md-6 col-md-offset-3 text-center">
-					<h2>{{ specialty.main_title }}</h2>
-					<p>{{ specialty.mini_description }}</p>
-				</div>
-				{% endfor %}
-			</div>
-			<div class="row">
-				{% for specialty in specialtys %}
-				<div class="col-md-6 animate-box">
-					<div class="course">
-						<a href="/specialty/{{ specialty.id }}/" class="course-img"
-						style="background-image: url(/media/{{ specialty.photo }});">
-						</a>
-						<div class="desc">
-							<h3 style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
-								<a href="/specialty/{{ specialty.id }}/">{{ specialty.title }}</a></h3>
-							<p style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">
-								{{ specialty.description }}</p>
-							<span><a href="/specialty/{{ specialty.id }}/" class="btn btn-primary btn-sm btn-course">
-								{% for tr_val in trans_values %}{% if tr_val.code == 'tolygyraq' %}{{ tr_val.title }}{% endif %}{% endfor %}
-							</a>
-							</span>
-						</div>
-					</div>
-				</div>
-				{% endfor %}
-			</div>
-		</div>
-	</div>
-
-	<div id="fh5co-testimonial" style="background-image: url(/static/images/school.jpg);">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
-					<h2><span>
-						{% for tr_val in trans_values %}{% if tr_val.code == 'comment' %}{{ tr_val.title }}{% endif %}{% endfor %}
-					</span></h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-10 col-md-offset-1">
-					<div class="row animate-box">
-						<div class="owl-carousel owl-carousel-fullwidth">
-							{% for comentary in comentarys %}
-							<div class="item">
-								<div class="testimony-slide active text-center">
-									<div class="user" style="background-image: url(/media/{{ comentary.photo }});"></div>
-									<span>{{ comentary.last_name }} {{ comentary.first_name }}<br><small>{{ comentary.position }}</small></span>
-									<blockquote>
-										<p>&ldquo;{{ comentary.mini_description }}&rdquo;</p>
-									</blockquote>
-								</div>
-							</div>
-							{% endfor %}
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div id="fh5co-blog">
-		<div class="container">
-			<div class="row animate-box">
-				{% for new in news %}
-				<div class="col-md-8 col-md-offset-2 text-center">
-					<h2>{{ new.title }}</h2>
-					<p>{{ new.mini_description }}</p>
-				</div>
-				{% endfor %}
-
-			</div>
-			<div class="row">
-				{% for new in news %}
-				<div class="col-lg-4 col-md-4">
-					<div class="fh5co-blog animate-box">
-						<a href="/news/{{ new.id }}/" class="blog-img-holder" style="background-image: url(/media/{{ new.photo1 }}"></a>
-						<div class="blog-text">
-							<h3 style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><a href="/news/{{ new.id }}/">{{ new.name }}</a></h3>
-							<span class="posted_on">{{ new.date }}</span>
-							<p style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;">{{ new.description }}</p>
-						</div>
-					</div>
-				</div>
-				{% endfor %}
-			</div>
-		</div>
-	</div>
-
-
-
-<div id="fh5co-contact">
-	{% for karta in kartas %}
-		<div class="container">
-			<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>{{ karta.main_title }}</h2>
-					<p>{{ karta.description }}</p>
-			</div>
-			<div class="row">
-				<div class="col-md-8  animate-box">
-						<iframe src="{{ karta.address_link }}" width="750" height="460" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-				</div>
-				<div class="col-md-4 animate-box">
-					<h3>
-						{% for tr_val in trans_values %}{% if tr_val.code == 'blog' %}{{ tr_val.title }}{% endif %}{% endfor %}
-					</h3>
-					<form id="request"  action="/" method="post">
-              				{% csrf_token %}
-						<div class="row form-group">
-							<div class="col-md-6">
-								<!-- <label for="fname">First Name</label> -->
-								<input type="text" id="fname" class="form-control"
-					placeholder="{% for tr_val in trans_values %}{% if tr_val.code == 'form1' %}{{ tr_val.title }}{% endif %}{% endfor %}"
-								 name="last_name">
-							</div>
-							<div class="col-md-6">
-								<!-- <label for="lname">Last Name</label> -->
-							<input type="text" id="lname" class="form-control"
-					placeholder="{% for tr_val in trans_values %}{% if tr_val.code == 'form2' %}{{ tr_val.title }}{% endif %}{% endfor %}"
-								   name="first_name">
-							</div>
-						</div>
-
-						<div class="row form-group">
-							<div class="col-md-12">
-								<!-- <label for="email">Email</label> -->
-								<input type="text" id="phone" class="form-control"
-					 placeholder="{% for tr_val in trans_values %}{% if tr_val.code == 'form3' %}{{ tr_val.title }}{% endif %}{% endfor %}"
-								name="phone">
-							</div>
-						</div>
-
-						<div class="row form-group">
-							<div class="col-md-12">
-								<!-- <label for="message">Message</label> -->
-								<textarea name="message" id="message" cols="30" rows="10" class="form-control"
-							 placeholder="{% for tr_val in trans_values %}{% if tr_val.code == 'form4' %}{{ tr_val.title }}{% endif %}{% endfor %}">
-
-								</textarea>
-							</div>
-						</div>
-						<div class="form-group">
-							<button type="submit" value="Жіберу" class="btn btn-primary">
-								{% for tr_val in trans_values %}{% if tr_val.code == 'jiberu' %}{{ tr_val.title }}{% endif %}{% endfor %}
-							</button>
-						</div>
-
-					</form>
-				</div>
-			</div>
-
-		</div>
-	{% endfor %}
-	</div>
-
-
-
-
-
-
-
-
-
-	{% endblock %}
-
-
-
-
+<section id="fh5co-contact" class="modern-contact-section">
+    {% for karta in kartas %}
+    <div class="container">
+        <div class="row animate-box">
+            <div class="col-md-6">
+                <div class="modern-map-panel">
+                    <span class="modern-kicker">Location</span>
+                    <h2>{{ karta.main_title }}</h2>
+                    <p>{{ karta.mini_description }}</p>
+                    <iframe src="{{ karta.address_link }}" width="100%" height="420" style="border:0; border-radius: 24px;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+            <div class="col-md-5 col-md-offset-1">
+                <div class="modern-form-panel animate-box">
+                    <span class="modern-kicker">Contact us</span>
+                    <h3>{% for tr_val in trans_values %}{% if tr_val.code == 'blog' %}{{ tr_val.title }}{% endif %}{% endfor %}</h3>
+                    <form id="request" action="/" method="post">
+                        {% csrf_token %}
+                        <div class="row form-group">
+                            <div class="col-md-6"><input type="text" id="fname" class="form-control" placeholder="{% for tr_val in trans_values %}{% if tr_val.code == 'form1' %}{{ tr_val.title }}{% endif %}{% endfor %}" name="last_name"></div>
+                            <div class="col-md-6"><input type="text" id="lname" class="form-control" placeholder="{% for tr_val in trans_values %}{% if tr_val.code == 'form2' %}{{ tr_val.title }}{% endif %}{% endfor %}" name="first_name"></div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12"><input type="text" id="phone" class="form-control" placeholder="{% for tr_val in trans_values %}{% if tr_val.code == 'form3' %}{{ tr_val.title }}{% endif %}{% endfor %}" name="phone"></div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12"><textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="{% for tr_val in trans_values %}{% if tr_val.code == 'form4' %}{{ tr_val.title }}{% endif %}{% endfor %}"></textarea></div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary modern-cta">{% for tr_val in trans_values %}{% if tr_val.code == 'jiberu' %}{{ tr_val.title }}{% endif %}{% endfor %}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 
+{% load asset_tags %}
 	{% block content %}
 
 
@@ -11,7 +12,7 @@
 				{% for teacher in teachers %}
 				<div class="col-md-3 animate-box text-center">
 					<div class="staff">
-						<div class="staff-img" style="background-image: url(/media/{{ teacher.photo }});">
+						<div class="staff-img" style="background-image: url({{ teacher.photo|asset_url }});">
 							<ul class="fh5co-social">
 								<li><a href="{{ teacher.facebook }}"><i class="icon-facebook2"></i></a></li>
 								<li><a href="{{ teacher.instagram }}"><i class="icon-twitter2"></i></a></li>
