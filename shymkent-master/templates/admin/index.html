@@ -1,0 +1,48 @@
+{% extends "admin/index.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="dashboard-hero">
+    <div>
+        <span class="dashboard-badge">Admin dashboard</span>
+        <h2>Контентті бір жерден басқарыңыз</h2>
+        <p>Жаңалықтар, мамандықтар, галерея, оқытушылар және сайт бөлімдерін жылдам жаңартыңыз.</p>
+    </div>
+    <div class="dashboard-stats">
+        <div class="stat-card">
+            <span class="stat-label">Модульдер</span>
+            <strong>{{ app_list|length }}</strong>
+        </div>
+        <div class="stat-card">
+            <span class="stat-label">Қолжетімділік</span>
+            <strong>24/7</strong>
+        </div>
+    </div>
+</div>
+
+<div class="model-grid">
+    {% for app in app_list %}
+    <section class="app-card">
+        <div class="app-card__header">
+            <h3>{{ app.name }}</h3>
+            <span>{{ app.app_label }}</span>
+        </div>
+        <div class="app-card__body">
+            {% for model in app.models %}
+            <div class="model-row">
+                <div>
+                    <strong>{{ model.name }}</strong>
+                    <p>{% if model.view_only %}Тек қарау{% else %}Қосу және өңдеу қолжетімді{% endif %}</p>
+                </div>
+                <div class="model-actions">
+                    {% if model.admin_url %}<a class="btn-soft" href="{{ model.admin_url }}">Ашу</a>{% endif %}
+                    {% if model.add_url %}<a class="btn-primary" href="{{ model.add_url }}">Қосу</a>{% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endfor %}
+</div>
+{{ block.super }}
+{% endblock %}

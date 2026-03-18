@@ -1,0 +1,28 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block extrastyle %}
+{{ block.super }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'admin/css/custom_admin.css' %}">
+{% endblock %}
+
+{% block bodyclass %}{{ block.super }} custom-admin{% endblock %}
+
+{% block branding %}
+<div class="brand-shell">
+    <div class="brand-mark">SC</div>
+    <div>
+        <h1 id="site-name"><a href="{% url 'admin:index' %}">Shymkent College Admin</a></h1>
+        <p class="brand-subtitle">Қарапайым, таза және ыңғайлы басқару панелі</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block nav-global %}
+<div class="header-actions">
+    <a href="/" target="_blank" rel="noopener">Сайтты ашу</a>
+</div>
+{% endblock %}
