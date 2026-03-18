@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+	{% block content %}
+
+
+
+
+	<div id="fh5co-about">
+    {% for l in license %}
+		<div class="container">
+			<div class="col-md-6 animate-box">
+				<h2>{{ l.title }}</h2>
+				 {{ l.short_description }}
+				<p><a href="/media/{{ l.word }}" target="_blank">{{ l.word_title }}</a></p>
+				<p><a href="/media/{{ l.pdf }}" target="_blank">{{ l.pdf_title }}</a></p>
+				<p><a href="{{ l.link }}">{{ j.link }}</a></p>
+			</div>
+			<div class="col-md-6">
+				{% if l.photo %}
+				<h5 class="card-header"><img style="width: 100%;" src="/media/{{ l.photo }}"></h5>
+				{% endif%}
+				<p></p>
+			</div>
+		</div>
+    {% endfor %}
+	</div>
+
+
+
+
+
+	{% endblock %}

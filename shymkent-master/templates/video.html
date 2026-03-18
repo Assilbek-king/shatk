@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+	{% block content %}
+
+<br>
+	<div class="container">
+		<div class="row" style="text-align: center;">
+			{% for v in video %}
+			<div class="col-sm">
+				<h2>{{ v.title }}</h2> <br> <br>
+				<iframe width="853" height="320" src="{{ v.vide_link }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	
+	<div id="fh5co-about">
+		<div class="container" style="width:853px; height:320px;">
+			{% for v in video %}
+			<p> {{ v.description }}  </p>
+			<p><a href="{{ v.link }}">{{ v.link }}</a></p>
+			{% endfor %}
+		</div>
+	</div>
+
+	
+
+	
+
+	
+
+
+	{% endblock %}
+

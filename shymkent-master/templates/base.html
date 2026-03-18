@@ -1,0 +1,389 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>М. Тынышбаев атындағы ҚазККА Шымкент көлік колледжі</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="М. Тынышбаев атындағы ҚазККА Шымкент көлік колледжі />
+	<meta name="keywords" content="М. Тынышбаев атындағы ҚазККА Шымкент көлік колледжі" />
+	{% for information in informations %}
+	<link rel="icon" href="/media/{{ information.logo }}">
+	{% endfor %}
+
+
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400" rel="stylesheet">
+
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="/static/css/animate.css">
+	<link rel="stylesheet" href="/static/bcs/bootstrapp.css">
+	<link rel="stylesheet" href="/static/bcss/bootstrapp.min.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="/static/css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="/static/css/bootstrap.css">
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="/static/css/magnific-popup.css">
+
+	<!-- Owl Carousel  -->
+	<link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
+
+	<!-- Flexslider  -->
+	<link rel="stylesheet" href="/static/css/flexslider.css">
+
+	<!-- Pricing -->
+	<link rel="stylesheet" href="/static/css/pricing.css">
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="/static/css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="/static/js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="/static/js/respond.min.js"></script>
+	<![endif]-->
+
+	</head>
+	<body>
+
+	<div class="fh5co-loader"></div>
+
+	<div id="page">
+	<nav class="fh5co-nav" role="navigation">
+		<div class="top">
+			<div class="container">
+				<div class="row">
+					{% for information in informations %}
+					<div class="col-xs-12 text-right">
+						 {% for tr_val in trans_values %}{% if tr_val.code == 'baylanys_tel' %}{{ tr_val.title }}{% endif %}{% endfor %}
+						<p class="num"><a style="color: black;" href="tel:{{ information.phone_info1 }}" target="_blank">  {{ information.phone_info1 }}</a></p>
+						<p class="num"><a style="color: black;" href="tel:{{ information.phone_info2 }}" target="_blank"> {{ information.phone_info2 }}</a></p>
+
+						<ul class="fh5co-social">
+							<li><a href="{{ information.facebook_info }}" target="_blank"><i class="icon-facebook2"></i></a></li>
+							<li><a href="{{ information.youtube_info }}" target="_blank"><i class="icon-youtube"></i></a></li>
+							<li><a href="{{ information.whatsapp_info }}" target="_blank"><i class="icon-whatsapp"></i></a></li>
+							<li><a href="{{ information.instagram_info }}" target="_blank"><i class="icon-instagram"></i></a></li>
+							{% for lan in langs %}
+							<li style="border-left: 2px solid rgba(0, 0, 0, 0.08);"><a href="/?lang={{ lan.code }}">{{ lan.code }}</a></li>
+							{% endfor %}
+						</ul>
+
+
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		<div class="top-menu">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-2">
+						{% for information in informations %}
+						<div id="fh5co-logo" style="width: 285px; font-size: 15px;"><a href="/"><img style="width: 50px;" src="/media/{{ information.logo }}">
+							<span>Шымкент көлік колледжі </span> </a>
+						{% endfor %}
+						</div>
+					</div>
+					<div class="col-xs-10 text-right menu-1" style="text-transform: uppercase;">
+						<ul>
+							<li class="active"><a href="/">
+								{% for tr_val in trans_values %}{% if tr_val.code == 'menu1' %}{{ tr_val.title }}{% endif %}{% endfor %}
+							</a></li>
+
+
+							<li class="has-dropdown">
+								<a href="/talapker/">
+									{% for tr_val in trans_values %}{% if tr_val.code == 'menu2' %}{{ tr_val.title }}{% endif %}{% endfor %}
+								</a>
+								<ul class="dropdown">
+									<li><a href="/courses/">
+									{% for tr_val in trans_values %}{% if tr_val.code == 'menu3' %}{{ tr_val.title }}{% endif %}{% endfor %}
+									</a></li>
+									<li><a href="/baza/">
+										{% for tr_val in trans_values %}{% if tr_val.code == 'menu4' %}{{ tr_val.title }}{% endif %}{% endfor %}
+
+									</a></li>
+									<li><a href="/qabyldau/">
+										{% for tr_val in trans_values %}{% if tr_val.code == 'menu5' %}{{ tr_val.title }}{% endif %}{% endfor %}
+
+									</a></li>
+									<li><a href="/biliktilik/">
+										{% for tr_val in trans_values %}{% if tr_val.code == 'menu6' %}{{ tr_val.title }}{% endif %}{% endfor %}
+									</a></li>
+									<li><a href="/video/">
+										{% for tr_val in trans_values %}{% if tr_val.code == 'menu7' %}{{ tr_val.title }}{% endif %}{% endfor %}
+									</a></li>
+
+								</ul>
+							</li>
+							<li class="has-dropdown">
+								<a href="/about/">
+									{% for tr_val in trans_values %}{% if tr_val.code == 'menu8' %}{{ tr_val.title }}{% endif %}{% endfor %}
+								</a>
+								<ul class="dropdown">
+									<li><a href="/about/">
+										{% for tr_val in trans_values %}{% if tr_val.code == 'menu9' %}{{ tr_val.title }}{% endif %}{% endfor %}
+									</a></li>
+									<li><a href="/aqparat/">
+										{% for tr_val in trans_values %}{% if tr_val.code == 'menu26' %}{{ tr_val.title }}{% endif %}{% endfor %}
+									</a></li>
+									<li><a href="/license/">
+										{% for tr_val in trans_values %}{% if tr_val.code == 'menu10' %}{{ tr_val.title }}{% endif %}{% endfor %}
+									</a></li>
+									<li><a href="/acredatsiya/">
+										{% for tr_val in trans_values %}{% if tr_val.code == 'menu11' %}{{ tr_val.title }}{% endif %}{% endfor %}
+									</a></li>
+									<li><a href="/missiya/">
+										{% for tr_val in trans_values %}{% if tr_val.code == 'menu12' %}{{ tr_val.title }}{% endif %}{% endfor %}
+									</a></li>
+									<li><a href="/teachers/">
+										{% for tr_val in trans_values %}{% if tr_val.code == 'menu13' %}{{ tr_val.title }}{% endif %}{% endfor %}
+									</a></li>
+
+								</ul>
+							</li>
+							<li class="has-dropdown">
+								<a href="/jemqorlyq/">
+									{% for tr_val in trans_values %}{% if tr_val.code == 'menu14' %}{{ tr_val.title }}{% endif %}{% endfor %}
+								</a>
+								<ul class="dropdown">
+									<li><a href="/adisteme-kabineti/">
+										{% for tr_val in trans_values %}{% if tr_val.code == 'menu16' %}{{ tr_val.title }}{% endif %}{% endfor %}
+									</a></li>
+									<li><a href="/kenes-jospary/">
+										{% for tr_val in trans_values %}{% if tr_val.code == 'menu18' %}{{ tr_val.title }}{% endif %}{% endfor %}
+									</a></li>
+
+									<li><a href="/jas-maman/">
+										{% for tr_val in trans_values %}{% if tr_val.code == 'menu17' %}{{ tr_val.title }}{% endif %}{% endfor %}
+									</a></li>
+
+									<li><a href="/jemqorlyq/">
+										{% for tr_val in trans_values %}{% if tr_val.code == 'menu15' %}{{ tr_val.title }}{% endif %}{% endfor %}
+									</a></li>
+
+
+									<li><a href="/jetistik/">
+										{% for tr_val in trans_values %}{% if tr_val.code == 'menu19' %}{{ tr_val.title }}{% endif %}{% endfor %}
+									</a></li>
+
+								</ul>
+							</li>
+							<li class="has-dropdown">
+								<a href="/studenttik-omir/">
+									{% for tr_val in trans_values %}{% if tr_val.code == 'menu20' %}{{ tr_val.title }}{% endif %}{% endfor %}
+								</a>
+								<ul class="dropdown">
+									<li><a href="/oqu/">
+										{% for tr_val in trans_values %}{% if tr_val.code == 'menu21' %}{{ tr_val.title }}{% endif %}{% endfor %}
+									</a></li>
+									<li><a href="/keste/">
+										{% for tr_val in trans_values %}{% if tr_val.code == 'menu23' %}{{ tr_val.title }}{% endif %}{% endfor %}
+									</a></li>
+									<li><a href="/jastar/">
+										{% for tr_val in trans_values %}{% if tr_val.code == 'menu22' %}{{ tr_val.title }}{% endif %}{% endfor %}
+									</a></li>
+
+									<li><a href="/student/">
+										{% for tr_val in trans_values %}{% if tr_val.code == 'menu24' %}{{ tr_val.title }}{% endif %}{% endfor %}
+									</a></li>
+									<li><a href="/studenttik-kenes/">
+										{% for tr_val in trans_values %}{% if tr_val.code == 'menu31' %}{{ tr_val.title }}{% endif %}{% endfor %}
+									</a></li>
+									<li><a href="/student-jetistigi/">
+										{% for tr_val in trans_values %}{% if tr_val.code == 'menu30' %}{{ tr_val.title }}{% endif %}{% endfor %}
+									</a></li>
+
+								</ul>
+							</li>
+							<li class="has-dropdown">
+								<a href="/tulekter/">
+									{% for tr_val in trans_values %}{% if tr_val.code == 'menu25' %}{{ tr_val.title }}{% endif %}{% endfor %}
+								</a>
+								<ul class="dropdown">
+
+									<li><a href="/bitirushiler/">
+										{% for tr_val in trans_values %}{% if tr_val.code == 'menu32' %}{{ tr_val.title }}{% endif %}{% endfor %}
+									</a></li>
+
+									<li><a href="/jumysqa-ornalasu/">
+										{% for tr_val in trans_values %}{% if tr_val.code == 'menu27' %}{{ tr_val.title }}{% endif %}{% endfor %}
+									</a></li>
+									<li><a href="/partner/">
+										{% for tr_val in trans_values %}{% if tr_val.code == 'menu28' %}{{ tr_val.title }}{% endif %}{% endfor %}
+									</a></li>
+									<li><a href="/ata-analar/">
+										{% for tr_val in trans_values %}{% if tr_val.code == 'menu29' %}{{ tr_val.title }}{% endif %}{% endfor %}
+									</a></li>
+
+								</ul>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</nav>
+
+
+
+
+{% block content %}
+
+
+{% endblock %}
+
+
+
+
+
+
+
+	<div id="fh5co-gallery" class="fh5co-bg-section">
+		<div class="row text-center">
+			<h2><span>Галерея</span></h2>
+		</div>
+		<div class="row">
+			{% for galery in galerys %}
+			<div class="col-md-3 col-padded">
+				<a href="/media/{{ galery.photo }}" class="gallery" style="background-image: url(/media/{{ galery.photo }});"></a>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<footer id="fh5co-footer" role="contentinfo" style="background-image: url(/static/images/img_bg_4.jpg);">
+		<div class="overlay"></div>
+		{% for information in informations %}
+		<div class="container">
+
+			<div class="row row-pb-md">
+				<div class="col-md-4 col-sm-6 col-xs-6 fh5co-widget">
+					<h3>
+						{% for tr_val in trans_values %}{% if tr_val.code == 'footer1' %}{{ tr_val.title }}{% endif %}{% endfor %}
+
+					</h3>
+
+					<ul class="fh5co-footer-links">
+						<li><a href="{{ information.menu_info1_link }}"> {{ information.menu_info1 }} </a></li>
+						<li><a href="{{ information.menu_info2_link }}">{{ information.menu_info2 }}</a></li>
+						<li><a href="{{ information.menu_info3_link }}">{{ information.menu_info3 }}</a></li>
+					</ul>
+
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-6 col-md-push-1 fh5co-widget">
+					<h3>
+						{% for tr_val in trans_values %}{% if tr_val.code == 'footer2' %}{{ tr_val.title }}{% endif %}{% endfor %}
+					</h3>
+					<ul class="fh5co-footer-links">
+						<li><a href="#">{{ information.address_name }}</a></li>
+						<li><a href="tel:{{ information.phone_info1 }}" target="_blank">{{ information.phone_info1 }}</a></li>
+						<li><a href="tel:{{ information.phone_info2 }}" target="_blank">{{ information.phone_info2 }}</a></li>
+						<li><a href="mailto: {{ information.email_info }}subject=Вопрос от студента">{{ information.email_info }}</a></li>
+					</ul>
+				</div>
+
+				<div class="col-md-4 col-sm-3 col-xs-6 col-md-push-1 fh5co-widget">
+					<h3>
+						{% for tr_val in trans_values %}{% if tr_val.code == 'footer3' %}{{ tr_val.title }}{% endif %}{% endfor %}
+					</h3>
+					<ul class="fh5co-footer-links">
+						<li><a href="{{ information.partner_info1_link }}">{{ information.partner_info1 }}</a></li>
+						<li><a href="{{ information.partner_info2_link }}">{{ information.partner_info2 }}</a></li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="row copyright">
+				<div class="col-md-12 text-center">
+					<p>
+						<small class="block">&copy;
+							{% for tr_val in trans_values %}{% if tr_val.code == 'footer4' %}{{ tr_val.title }}{% endif %}{% endfor %}
+
+						</small>
+						<small class="block">
+
+							<a href="{{ information.facebook_info }}" target="_blank"><i class="icon-facebook2"></i></a>&nbsp; &nbsp;
+							<a href="{{ information.youtube_info }}" target="_blank"><i class="icon-youtube"></i></a>&nbsp; &nbsp;
+							<a href="{{ information.whatsapp_info }}" target="_blank"><i class="icon-whatsapp"></i></a>&nbsp; &nbsp;
+							<a href="{{ information.instagram_info }}" target="_blank"><i class="icon-instagram"></i></a>
+
+						</small>
+					</p>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</footer>
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+	</div>
+
+	<!-- jQuery -->
+	<script src="/static/js/jquery.min.js"></script>
+	<script src="/static/bjs/bootstrap.js"></script>
+	<script src="/static/bjs/bootstrap.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="/static/js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="/static/js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="/static/js/jquery.waypoints.min.js"></script>
+	<!-- Stellar Parallax -->
+	<script src="/static/js/jquery.stellar.min.js"></script>
+	<!-- Carousel -->
+	<script src="/static/js/owl.carousel.min.js"></script>
+	<!-- Flexslider -->
+	<script src="/static/js/jquery.flexslider-min.js"></script>
+	<!-- countTo -->
+	<script src="/static/js/jquery.countTo.js"></script>
+	<!-- Magnific Popup -->
+	<script src="/static/js/jquery.magnific-popup.min.js"></script>
+	<script src="/static/js/magnific-popup-options.js"></script>
+	<!-- Count Down -->
+	<script src="/static/js/simplyCountdown.js"></script>
+	<!-- Main -->
+	<script src="/static/js/main.js"></script>
+
+	<script>
+    var d = new Date(new Date().getTime() + 1000 * 120 * 120 * 2000);
+
+    // default example
+    simplyCountdown('.simply-countdown-one', {
+        year: d.getFullYear(),
+        month: d.getMonth() + 1,
+        day: d.getDate()
+    });
+
+    //jQuery example
+    $('#simply-countdown-losange').simplyCountdown({
+        year: d.getFullYear(),
+        month: d.getMonth() + 1,
+        day: d.getDate(),
+        enableUtc: false
+    });
+	</script>
+	</body>
+</html>

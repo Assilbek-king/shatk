@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+
+	{% block content %}
+
+
+
+<div id="fh5co-about">
+    {% for k in kenes %}
+		<div class="container">
+			<div class="col-md-6 animate-box">
+				<h2>{{ k.title }}</h2>
+				 {{ k.short_description }}
+				<p><a href="/media/{{ k.word }}" target="_blank">{{ k.word_title }}</a></p>
+				<p><a href="/media/{{ k.pdf }}" target="_blank">{{ k.pdf_title }}</a></p>
+				<p><a href="{{ k.link }}">{{ k.link }}</a></p>
+			</div>
+			<div class="col-md-6">
+				{% if k.photo %}
+				<h5 class="card-header"><img style="width: 100%;" src="/media/{{ k.photo }}"></h5>
+				{% endif%}
+				<p></p>
+			</div>
+		</div>
+    {% endfor %}
+	</div>
+
+
+
+
+
+
+
+	{% endblock %}

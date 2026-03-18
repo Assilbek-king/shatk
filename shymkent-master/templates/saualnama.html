@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+	{% block content %}
+
+
+
+<div id="fh5co-about">
+    {% for s in saualnama %}
+		<div class="container">
+			<div class="col-md-6 animate-box">
+				<h2>{{ s.title }}</h2>
+				 {{ s.short_description }}
+				<p><a href="{{ s.link }}">{{ s.link }}</a></p>
+			</div>
+			<div class="col-md-6">
+				{% if s.photo %}
+				<h5 class="card-header"><img style="width: 100%;" src="/media/{{ s.photo }}"></h5>
+				{% endif%}
+				<p></p>
+			</div>
+		</div>
+    {% endfor %}
+	</div>
+
+
+
+
+
+
+
+    {% endblock %}

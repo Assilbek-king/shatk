@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+	{% block content %}
+
+
+
+
+	<div class="container">
+		{% for s in student %}
+			<div class="card">
+			  <h5 class="card-header"><img style="width: 100%; height: 450px;" src="/media/{{ s.photo }}"></h5>
+			  <div class="card-body">
+			    <h5 class="card-title">{{ s.title }}</h5>
+			    <p class="card-text"> {{ s.short_description }}</p>
+				  </div>
+			</div>
+		{% endfor %}
+	</div>
+
+
+
+
+
+	{% endblock %}

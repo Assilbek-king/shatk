@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+	{% block content %}
+	
+
+	
+	
+
+	<div id="fh5co-course">
+		<div class="container">
+			<div class="row animate-box">
+				{% for specialty in specialtys %}
+				<div class="col-md-6 col-md-offset-3 text-center">
+					<h2>{{ specialty.main_title }}</h2>
+					<p>{{ specialty.mini_description }}</p>
+				</div>
+				{% endfor %}
+			</div>
+			<div class="row">
+				{% for specialty in specialtys %}
+				<div class="col-md-6 animate-box">
+					<div class="course">
+						<a href="#" class="course-img" 
+						style="background-image: url(/media/{{ specialty.photo }});">
+						</a>
+						<div class="desc">
+							<h3 style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
+								<a href="/specialty/{{ specialty.id }}/">{{ specialty.title }}</a></h3>
+							<p style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">
+								{{ specialty.description }}</p>
+							<span><a href="/specialty/{{ specialty.id }}/" class="btn btn-primary btn-sm btn-course">
+								{% for tr_val in trans_values %}{% if tr_val.code == 'tolygyraq' %}{{ tr_val.title }}{% endif %}{% endfor %}
+							</a>
+							</span>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+
+	{% endblock %}
+
