@@ -43,7 +43,7 @@ class Information(models.Model):
     menu_info3 = models.TextField(blank=True)
     menu_info3_link = models.TextField(blank=True)
     status = models.IntegerField(default=0, blank=True)
-    logo = models.ImageField(upload_to='upload', blank=True)
+    logo = models.URLField(max_length=1200, blank=True)
     lang = models.ForeignKey(Languages,  on_delete=models.CASCADE, default=1, blank=True)
 
     def __str__(self):
@@ -51,7 +51,7 @@ class Information(models.Model):
 
 class Slider(models.Model):
     main_title = models.TextField(blank=True)
-    photo = models.ImageField(upload_to='upload')
+    photo = models.URLField(max_length=1200)
     mini_description = models.CharField(max_length=500, blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
@@ -65,7 +65,7 @@ class Slider(models.Model):
 class Icon(models.Model):
     main_title = models.TextField(blank=True)
     description = models.CharField(max_length=500, blank=True)
-    #icon = models.ImageField(upload_to='upload', blank=True)
+    #icon = models.URLField(max_length=1200, blank=True)
     name = models.TextField(blank=True)
     title = models.TextField(blank=True)
     mini_description = models.CharField(max_length=500, blank=True)
@@ -78,7 +78,7 @@ class Icon(models.Model):
         return self.title
 
 class About(models.Model):
-    # icon = models.ImageField(upload_to='upload', blank=True)
+    # icon = models.URLField(max_length=1200, blank=True)
     logo = models.TextField(blank=True)
     name = models.TextField(blank=True)
     count = models.IntegerField(default=0)
@@ -93,7 +93,7 @@ class About(models.Model):
 class Specialty(models.Model):
     main_title = models.TextField(blank=True)
     mini_description = models.CharField(max_length=500, blank=True)
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
@@ -107,7 +107,7 @@ class Specialty(models.Model):
         return self.title
 
 class Comentary(models.Model):
-    photo = models.ImageField(upload_to='upload')
+    photo = models.URLField(max_length=1200)
     last_name = models.CharField(max_length=300)
     first_name = models.CharField(max_length=300)
     position = models.CharField(max_length=300)
@@ -124,9 +124,9 @@ class Comentary(models.Model):
 class News(models.Model):
     title = models.TextField(blank=True)
     mini_description = models.TextField(blank=True)
-    photo1 = models.ImageField(upload_to='upload')
-    photo2 = models.ImageField(upload_to='upload')
-    photo3 = models.ImageField(upload_to='upload')
+    photo1 = models.URLField(max_length=1200)
+    photo2 = models.URLField(max_length=1200)
+    photo3 = models.URLField(max_length=1200)
     name = models.TextField(blank=True)
     date = models.TextField(blank=True)
     description = models.TextField(blank=True)
@@ -163,7 +163,7 @@ class Register(models.Model):
 
 class Galery(models.Model):
     name = models.CharField(max_length=300)
-    photo = models.ImageField(upload_to='upload')
+    photo = models.URLField(max_length=1200)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
     is_main = models.BooleanField(default=0, blank=True)
@@ -174,7 +174,7 @@ class Galery(models.Model):
 
 
 class Teacher(models.Model):
-    photo = models.ImageField(upload_to='upload')
+    photo = models.URLField(max_length=1200)
     last_name = models.TextField(blank=True)
     first_name = models.TextField(blank=True)
     surname = models.TextField(blank=True)
@@ -193,7 +193,7 @@ class Teacher(models.Model):
 
 
 class Baza(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
@@ -207,7 +207,7 @@ class Baza(models.Model):
 
 
 class Qabyldau(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
@@ -219,7 +219,7 @@ class Qabyldau(models.Model):
         return self.title
 
 class Biliktilik(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
@@ -245,7 +245,7 @@ class Video(models.Model):
         return self.title
 
 class KollejTarihi(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
@@ -258,15 +258,15 @@ class KollejTarihi(models.Model):
         return self.title
 
 class License(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
     lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
     link = models.TextField(blank=True)
-    pdf = models.FileField(blank=True)
-    word = models.FileField(blank=True)
+    pdf = models.URLField(max_length=1200, blank=True)
+    word = models.URLField(max_length=1200, blank=True)
     pdf_title = models.TextField(blank=True)
     word_title = models.TextField(blank=True)
 
@@ -277,7 +277,7 @@ class License(models.Model):
 
 
 class Tulekter(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
@@ -290,7 +290,7 @@ class Tulekter(models.Model):
         return self.title
 
 class Acredatsiya(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
@@ -300,7 +300,7 @@ class Acredatsiya(models.Model):
         return self.title
 
 class Qurylym(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
@@ -310,7 +310,7 @@ class Qurylym(models.Model):
         return self.title
 
 class Missiya(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
@@ -322,7 +322,7 @@ class Missiya(models.Model):
         return self.title
 
 class OquAdisteme(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
@@ -332,7 +332,7 @@ class OquAdisteme(models.Model):
         return self.title
 
 class Oqu(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
@@ -345,7 +345,7 @@ class Oqu(models.Model):
 
 
 class Jemqorlyq(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
@@ -358,15 +358,15 @@ class Jemqorlyq(models.Model):
 
 
 class AdistemelikKabinet(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
     lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
     link = models.TextField(blank=True)
-    pdf = models.FileField(blank=True)
-    word = models.FileField(blank=True)
+    pdf = models.URLField(max_length=1200, blank=True)
+    word = models.URLField(max_length=1200, blank=True)
     pdf_title = models.TextField(blank=True)
     word_title = models.TextField(blank=True)
 
@@ -374,7 +374,7 @@ class AdistemelikKabinet(models.Model):
         return self.title
 
 class JasMaman(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
@@ -382,8 +382,8 @@ class JasMaman(models.Model):
     lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
     link = models.TextField(blank=True)
     link = models.TextField(blank=True)
-    pdf = models.FileField(blank=True)
-    word = models.FileField(blank=True)
+    pdf = models.URLField(max_length=1200, blank=True)
+    word = models.URLField(max_length=1200, blank=True)
     pdf_title = models.TextField(blank=True)
     word_title = models.TextField(blank=True)
 
@@ -392,7 +392,7 @@ class JasMaman(models.Model):
         return self.title
 
 class Birlestikter(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
@@ -402,15 +402,15 @@ class Birlestikter(models.Model):
         return self.title
 
 class KenesJospary(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
     lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
     link = models.TextField(blank=True)
-    pdf = models.FileField(blank=True)
-    word = models.FileField(blank=True)
+    pdf = models.URLField(max_length=1200, blank=True)
+    word = models.URLField(max_length=1200, blank=True)
     pdf_title = models.TextField(blank=True)
     word_title = models.TextField(blank=True)
 
@@ -418,7 +418,7 @@ class KenesJospary(models.Model):
         return self.title
 
 class Jetistikter(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
@@ -430,7 +430,7 @@ class Jetistikter(models.Model):
         return self.title
 
 class Qashyqtyq(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
@@ -440,15 +440,15 @@ class Qashyqtyq(models.Model):
         return self.title
 
 class OquUrdisi(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
     lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
     link = models.TextField(blank=True)
-    pdf = models.FileField(blank=True)
-    word = models.FileField(blank=True)
+    pdf = models.URLField(max_length=1200, blank=True)
+    word = models.URLField(max_length=1200, blank=True)
     pdf_title = models.TextField(blank=True)
     word_title = models.TextField(blank=True)
 
@@ -458,7 +458,7 @@ class OquUrdisi(models.Model):
 
 
 class SabaqKeste(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
@@ -468,7 +468,7 @@ class SabaqKeste(models.Model):
         return self.title
 
 class StudentJetistik(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
@@ -481,15 +481,15 @@ class StudentJetistik(models.Model):
         return self.title
 
 class StudenttikKenes(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
     lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
     link = models.TextField(blank=True)
-    pdf = models.FileField(blank=True)
-    word = models.FileField(blank=True)
+    pdf = models.URLField(max_length=1200, blank=True)
+    word = models.URLField(max_length=1200, blank=True)
     pdf_title = models.TextField(blank=True)
     word_title = models.TextField(blank=True)
 
@@ -497,7 +497,7 @@ class StudenttikKenes(models.Model):
         return self.title
 
 class Aqparat(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
@@ -507,15 +507,15 @@ class Aqparat(models.Model):
         return self.title
 
 class JumysqaOrnalasu(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
     lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
     link = models.TextField(blank=True)
-    pdf = models.FileField(blank=True)
-    word = models.FileField(blank=True)
+    pdf = models.URLField(max_length=1200, blank=True)
+    word = models.URLField(max_length=1200, blank=True)
     pdf_title = models.TextField(blank=True)
     word_title = models.TextField(blank=True)
 
@@ -524,7 +524,7 @@ class JumysqaOrnalasu(models.Model):
         return self.title
 
 class Seriktester(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
@@ -536,7 +536,7 @@ class Seriktester(models.Model):
         return self.title
 
 class Saualnama(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
@@ -550,7 +550,7 @@ class Saualnama(models.Model):
 
 
 class Bitirushiler(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
@@ -560,7 +560,7 @@ class Bitirushiler(models.Model):
         return self.title
 
 class StudenttikOmir(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
@@ -573,7 +573,7 @@ class StudenttikOmir(models.Model):
 
 
 class Talapker(models.Model):
-    photo = models.ImageField(upload_to='upload', blank=True)
+    photo = models.URLField(max_length=1200, blank=True)
     title = models.TextField(blank=True)
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)

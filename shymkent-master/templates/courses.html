@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 
+{% load asset_tags %}
 	{% block content %}
 	
 
@@ -22,7 +23,7 @@
 				<div class="col-md-6 animate-box">
 					<div class="course">
 						<a href="#" class="course-img" 
-						style="background-image: url(/media/{{ specialty.photo }});">
+						style="background-image: url({{ specialty.photo|asset_url }});">
 						</a>
 						<div class="desc">
 							<h3 style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">

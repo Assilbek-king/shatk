@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 
+{% load asset_tags %}
 	{% block content %}
 
 
@@ -11,13 +12,13 @@
 			<div class="col-md-6 animate-box">
 				<h2>{{ o.title }}</h2>
 				 {{ o.short_description }}
-				<p><a href="/media/{{ o.word }}" target="_blank">{{ o.word_title }}</a></p>
-				<p><a href="/media/{{ o.pdf }}" target="_blank">{{ o.pdf_title }}</a></p>
+				<p><a href="{{ o.word|asset_url }}" target="_blank">{{ o.word_title }}</a></p>
+				<p><a href="{{ o.pdf|asset_url }}" target="_blank">{{ o.pdf_title }}</a></p>
 				<p><a href="{{ o.link }}">{{ o.link }}</a></p>
 			</div>
 			<div class="col-md-6">
 				{% if o.photo %}
-				<h5 class="card-header"><img style="width: 100%;" src="/media/{{ o.photo }}"></h5>
+				<h5 class="card-header"><img style="width: 100%;" src="{{ o.photo|asset_url }}"></h5>
 				{% endif%}
 				<p></p>
 			</div>
