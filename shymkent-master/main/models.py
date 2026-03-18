@@ -10,7 +10,7 @@ class Languages(models.Model):
 class TransValue(models.Model):
     code = models.TextField(blank=True)
     title = models.TextField(blank=True)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.title + ' ' + self.code
@@ -44,7 +44,8 @@ class Information(models.Model):
     menu_info3_link = models.TextField(blank=True)
     status = models.IntegerField(default=0, blank=True)
     logo = models.URLField(max_length=1200, blank=True)
-    lang = models.ForeignKey(Languages,  on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
+    
 
     def __str__(self):
         return self.address
@@ -55,7 +56,7 @@ class Slider(models.Model):
     mini_description = models.CharField(max_length=500, blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
 
 
     def __str__(self):
@@ -72,7 +73,7 @@ class Icon(models.Model):
     link = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.title
@@ -84,7 +85,7 @@ class About(models.Model):
     count = models.IntegerField(default=0)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -99,7 +100,7 @@ class Specialty(models.Model):
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
     is_main = models.BooleanField(default=0, blank=True)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     link = models.TextField(blank=True)
 
 
@@ -115,7 +116,7 @@ class Comentary(models.Model):
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
     is_main = models.BooleanField(default=0, blank=True)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
 
 
     def __str__(self):
@@ -133,7 +134,7 @@ class News(models.Model):
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
     is_main = models.BooleanField(default=0, blank=True)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     link = models.TextField(blank=True)
 
 
@@ -147,7 +148,7 @@ class Karta(models.Model):
     main_title = models.TextField(blank=True)
     mini_description = models.CharField(max_length=500, blank=True)
     address_link = models.CharField(max_length=500, blank=True)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.main_title + ' ' + self.lang.code
@@ -157,7 +158,7 @@ class Register(models.Model):
     first_name = models.CharField(max_length=300)
     phone = models.CharField(max_length=300)
     message = models.TextField()
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     def __str__(self):
         return self.last_name
 
@@ -167,7 +168,7 @@ class Galery(models.Model):
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
     is_main = models.BooleanField(default=0, blank=True)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -186,7 +187,7 @@ class Teacher(models.Model):
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
     is_main = models.BooleanField(default=0, blank=True)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.last_name
@@ -198,7 +199,7 @@ class Baza(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     link = models.TextField(blank=True)
 
 
@@ -212,7 +213,7 @@ class Qabyldau(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     link = models.TextField(blank=True)
 
     def __str__(self):
@@ -224,7 +225,7 @@ class Biliktilik(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     link = models.TextField(blank=True)
 
 
@@ -237,7 +238,7 @@ class Video(models.Model):
     description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     link = models.TextField(blank=True)
 
 
@@ -250,7 +251,7 @@ class KollejTarihi(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     link = models.TextField(blank=True)
 
 
@@ -263,7 +264,7 @@ class License(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     link = models.TextField(blank=True)
     pdf = models.URLField(max_length=1200, blank=True)
     word = models.URLField(max_length=1200, blank=True)
@@ -282,7 +283,7 @@ class Tulekter(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     link = models.TextField(blank=True)
 
 
@@ -295,7 +296,7 @@ class Acredatsiya(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     def __str__(self):
         return self.title
 
@@ -305,7 +306,7 @@ class Qurylym(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     def __str__(self):
         return self.title
 
@@ -315,7 +316,7 @@ class Missiya(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     link = models.TextField(blank=True)
 
     def __str__(self):
@@ -327,7 +328,7 @@ class OquAdisteme(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     def __str__(self):
         return self.title
 
@@ -337,7 +338,7 @@ class Oqu(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     link = models.TextField(blank=True)
 
     def __str__(self):
@@ -350,7 +351,7 @@ class Jemqorlyq(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     link = models.TextField(blank=True)
 
     def __str__(self):
@@ -363,7 +364,7 @@ class AdistemelikKabinet(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     link = models.TextField(blank=True)
     pdf = models.URLField(max_length=1200, blank=True)
     word = models.URLField(max_length=1200, blank=True)
@@ -379,7 +380,7 @@ class JasMaman(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     link = models.TextField(blank=True)
     link = models.TextField(blank=True)
     pdf = models.URLField(max_length=1200, blank=True)
@@ -397,7 +398,7 @@ class Birlestikter(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     def __str__(self):
         return self.title
 
@@ -407,7 +408,7 @@ class KenesJospary(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     link = models.TextField(blank=True)
     pdf = models.URLField(max_length=1200, blank=True)
     word = models.URLField(max_length=1200, blank=True)
@@ -423,7 +424,7 @@ class Jetistikter(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     link = models.TextField(blank=True)
 
     def __str__(self):
@@ -435,7 +436,7 @@ class Qashyqtyq(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     def __str__(self):
         return self.title
 
@@ -445,7 +446,7 @@ class OquUrdisi(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     link = models.TextField(blank=True)
     pdf = models.URLField(max_length=1200, blank=True)
     word = models.URLField(max_length=1200, blank=True)
@@ -463,7 +464,7 @@ class SabaqKeste(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     def __str__(self):
         return self.title
 
@@ -473,7 +474,7 @@ class StudentJetistik(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     link = models.TextField(blank=True)
 
 
@@ -486,7 +487,7 @@ class StudenttikKenes(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     link = models.TextField(blank=True)
     pdf = models.URLField(max_length=1200, blank=True)
     word = models.URLField(max_length=1200, blank=True)
@@ -502,7 +503,7 @@ class Aqparat(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     def __str__(self):
         return self.title
 
@@ -512,7 +513,7 @@ class JumysqaOrnalasu(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     link = models.TextField(blank=True)
     pdf = models.URLField(max_length=1200, blank=True)
     word = models.URLField(max_length=1200, blank=True)
@@ -529,7 +530,7 @@ class Seriktester(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     link = models.TextField(blank=True)
 
     def __str__(self):
@@ -541,7 +542,7 @@ class Saualnama(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     link = models.TextField(blank=True)
 
     def __str__(self):
@@ -555,7 +556,7 @@ class Bitirushiler(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     def __str__(self):
         return self.title
 
@@ -565,7 +566,7 @@ class StudenttikOmir(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     link = models.TextField(blank=True)
 
     def __str__(self):
@@ -578,7 +579,7 @@ class Talapker(models.Model):
     short_description = models.TextField(blank=True)
     status = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
-    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, default=1, blank=True)
+    lang = models.ForeignKey(Languages, on_delete=models.CASCADE, null=True, blank=True)
     def __str__(self):
         return self.title
 
